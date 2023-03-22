@@ -9,6 +9,21 @@ npm install @k2works/full-stack-lab
 
 ## usage
 
+```html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>App</title>
+  </head>
+  <body>
+    <h1>アプリケーション</h1>
+      <div id="app"></div>
+      <div id="app-dev"></div>
+  </body>
+</html>
+```
+
 ```js
 import { render } from "full-stack-lab";
 const contents = `
