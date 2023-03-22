@@ -1,5 +1,5 @@
 {
-  "name": "full-stack-lab",
+  "name": "@k2works/full-stack-lab",
   "version": "1.0.0",
   "description": "フルスタック開発教育支援ツール",
   "main": "index.js",
