@@ -6,7 +6,11 @@
   "scripts": {
     "start": "webpack server --config ./webpack.config.js --open",
     "build": "webpack --config ./webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "npm:patch": "npm version patch",
+    "npm:minor": "npm version minor",
+    "npm:major": "npm version major",
+    "npm:publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
