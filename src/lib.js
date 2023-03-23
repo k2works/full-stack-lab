@@ -1,10 +1,10 @@
 import marked from 'marked';
 
 export const render = (params) => {
-  const { contents, uml, erd } = params;
+  const { contents, usecase, uml, erd } = params;
   init();
   documents(contents);
-  diagrams(uml, erd);
+  diagrams(usecase, uml, erd);
 };
 
 const init = () => {
@@ -20,6 +20,11 @@ const init = () => {
               </div>
               <div class="row p-3">
                 <div id="spec"></div>
+              </div>
+              <h2>ユースケース</h2>
+              <div class="row p-3">
+                <img id="usecae-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
               <h2>オブジェクトモデル</h2>
               <div class="row p-3">
@@ -46,15 +51,22 @@ const documents = (contents) => {
   });
 };
 
-const diagrams = (uml, erd) => {
-  const classDiagram = ((uml) => {
+const diagrams = (usecase, uml, erd) => {
+  ((usecae) => {
+    const inputId = 'class-diagram-input';
+    const outputId = 'usecae-im';
+    const source = usecae;
+    compress(source, outputId);
+  })(usecase);
+
+  ((uml) => {
     const inputId = 'class-diagram-input';
     const outputId = 'class-im';
     const source = uml;
     compress(source, outputId);
   })(uml);
 
-  const erDiagram = ((erd) => {
+  ((erd) => {
     const inputId = 'er-diagram-input';
     const outputId = 'er-im';
     const source = erd;
