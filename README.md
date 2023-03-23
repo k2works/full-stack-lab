@@ -25,7 +25,7 @@ npm install @k2works/full-stack-lab
 ```
 
 ```js
-import render from "full-stack-lab";
+import render from "@k2works/full-stack-lab";
 const contents = `
 ## 機能名
 ## 仕様
