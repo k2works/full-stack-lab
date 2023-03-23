@@ -1,4 +1,4 @@
-import { render } from '../index';
+import render from '../index';
 const contents = `
 ## 機能名
 ## 仕様
