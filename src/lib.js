@@ -1,10 +1,10 @@
 import marked from 'marked';
 
 export const render = (params) => {
-  const { contents, usecase, uml, erd } = params;
+  const { contents, usecase, ui, uml, erd } = params;
   init();
   documents(contents);
-  diagrams(usecase, uml, erd);
+  diagrams(usecase, ui, uml, erd);
 };
 
 const init = () => {
@@ -24,6 +24,11 @@ const init = () => {
               <h2>ユースケース</h2>
               <div class="row p-3">
                 <img id="usecae-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h2>ユーザーインターフェース</h2>
+              <div class="row p-3">
+                <img id="ui-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
               <h2>オブジェクトモデル</h2>
@@ -51,13 +56,20 @@ const documents = (contents) => {
   });
 };
 
-const diagrams = (usecase, uml, erd) => {
+const diagrams = (usecase, ui, uml, erd) => {
   ((usecae) => {
     const inputId = 'class-diagram-input';
     const outputId = 'usecae-im';
     const source = usecae;
     compress(source, outputId);
   })(usecase);
+
+  ((ui) => {
+    const inputId = 'ui-diagram-input';
+    const outputId = 'ui-im';
+    const source = ui;
+    compress(source, outputId);
+  })(ui);
 
   ((uml) => {
     const inputId = 'class-diagram-input';
