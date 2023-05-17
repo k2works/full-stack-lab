@@ -1,4 +1,6 @@
 import render from '../index';
+import { style } from './lib';
+
 const contents = `
 ## 機能名
 ## 仕様
@@ -184,4 +186,6 @@ e01 ||..o{ e02
 e01 |o..o{ e03
 @enduml
 `;
-render({ contents, ui, uiModel, uiInteraction, usecase, uml, erd });
+
+const mode = style.APP;
+render({ contents, ui, uiModel, uiInteraction, usecase, uml, erd, mode });

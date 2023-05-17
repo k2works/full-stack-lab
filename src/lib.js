@@ -1,17 +1,88 @@
 import marked from 'marked';
 
+export const style = {
+  APP: 'APP',
+  UI: 'UI',
+  API: 'API',
+}
+
 export const render = (params) => {
-  const { contents, usecase, ui, uiModel, uiInteraction, uml, erd } = params;
-  init();
+  const { contents, usecase, ui, uiModel, uiInteraction, uml, erd, mode } = params;
+  init(mode);
   documents(contents);
-  diagrams(usecase, ui, uiModel, uiInteraction, uml, erd);
+  diagrams(usecase, ui, uiModel, uiInteraction, uml, erd, mode);
 };
 
-const init = () => {
+const init = (style) => {
   document.addEventListener('DOMContentLoaded', () => {
     const dev = document.querySelector('#app-dev');
     if (dev !== null) {
-      dev.innerHTML = `
+      switch (style) {
+        case "UI":
+          dev.innerHTML = `
+            <div class="container">
+              <h1>開発</h1>
+              <div class="py-3">
+                <div id="app"></div>
+                <!--<div id="mocha"></div>-->
+              </div>
+              <div class="row p-3">
+                <div id="spec"></div>
+              </div>
+              <h2>ユースケース</h2>
+              <div class="row p-3">
+                <img id="usecae-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h2>ユーザーインターフェース</h2>
+              <div class="row p-3">
+                <img id="ui-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h3>モデル</h3>
+              <div class="row p-3">
+                <img id="ui-model-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h3>インタラクション</h3>
+              <div class="row p-3">
+                <img id="ui-interaction-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+            </div> `;
+
+          break;
+        case "API":
+          dev.innerHTML = `
+            <div class="container">
+              <h1>開発</h1>
+              <div class="py-3">
+                <div id="app"></div>
+                <!--<div id="mocha"></div>-->
+              </div>
+              <div class="row p-3">
+                <div id="spec"></div>
+              </div>
+              <h2>ユースケース</h2>
+              <div class="row p-3">
+                <img id="usecae-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h2>オブジェクトモデル</h2>
+              <div class="row p-3">
+                <img id="class-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h2>データモデル</h2>
+              <div class="row p-3">
+                <img id="er-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+            </div> `;
+
+          break;
+        default:
+          dev.innerHTML = `
             <div class="container">
               <h1>開発</h1>
               <div class="py-3">
@@ -52,6 +123,7 @@ const init = () => {
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
             </div> `;
+      }
     }
   });
 };
@@ -66,42 +138,87 @@ const documents = (contents) => {
   });
 };
 
-const diagrams = (usecase, ui, uiModel, uiInteraction, uml, erd) => {
-  ((usecae) => {
-    const outputId = 'usecae-im';
-    const source = usecae;
-    compress(source, outputId);
-  })(usecase);
+const diagrams = (usecase, ui, uiModel, uiInteraction, uml, erd, mode) => {
+  if (mode === style.UI) {
+    ((usecae) => {
+      const outputId = 'usecae-im';
+      const source = usecae;
+      compress(source, outputId);
+    })(usecase);
 
-  ((ui) => {
-    const outputId = 'ui-im';
-    const source = ui;
-    compress(source, outputId);
-  })(ui);
+    ((ui) => {
+      const outputId = 'ui-im';
+      const source = ui;
+      compress(source, outputId);
+    })(ui);
 
-  ((uiModel) => {
-    const outputId = 'ui-model-im';
-    const source = uiModel;
-    compress(source, outputId);
-  })(uiModel);
+    ((uiModel) => {
+      const outputId = 'ui-model-im';
+      const source = uiModel;
+      compress(source, outputId);
+    })(uiModel);
 
-  ((uiInteraction) => {
-    const outputId = 'ui-interaction-im';
-    const source = uiInteraction;
-    compress(source, outputId);
-  })(uiInteraction);
+    ((uiInteraction) => {
+      const outputId = 'ui-interaction-im';
+      const source = uiInteraction;
+      compress(source, outputId);
+    })(uiInteraction);
 
-  ((uml) => {
-    const outputId = 'class-im';
-    const source = uml;
-    compress(source, outputId);
-  })(uml);
+  } else if (mode === style.API) {
+    ((usecae) => {
+      const outputId = 'usecae-im';
+      const source = usecae;
+      compress(source, outputId);
+    })(usecase);
 
-  ((erd) => {
-    const outputId = 'er-im';
-    const source = erd;
-    compress(source, outputId);
-  })(erd);
+    ((uml) => {
+      const outputId = 'class-im';
+      const source = uml;
+      compress(source, outputId);
+    })(uml);
+
+    ((erd) => {
+      const outputId = 'er-im';
+      const source = erd;
+      compress(source, outputId);
+    })(erd);
+  } else {
+    ((usecae) => {
+      const outputId = 'usecae-im';
+      const source = usecae;
+      compress(source, outputId);
+    })(usecase);
+
+    ((ui) => {
+      const outputId = 'ui-im';
+      const source = ui;
+      compress(source, outputId);
+    })(ui);
+
+    ((uiModel) => {
+      const outputId = 'ui-model-im';
+      const source = uiModel;
+      compress(source, outputId);
+    })(uiModel);
+
+    ((uiInteraction) => {
+      const outputId = 'ui-interaction-im';
+      const source = uiInteraction;
+      compress(source, outputId);
+    })(uiInteraction);
+
+    ((uml) => {
+      const outputId = 'class-im';
+      const source = uml;
+      compress(source, outputId);
+    })(uml);
+
+    ((erd) => {
+      const outputId = 'er-im';
+      const source = erd;
+      compress(source, outputId);
+    })(erd);
+  }
 
   function encode64(data) {
     let r = '';
