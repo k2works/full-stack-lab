@@ -4,6 +4,7 @@ export const style = {
   APP: 'APP',
   UI: 'UI',
   API: 'API',
+  DOC: 'DOC',
 }
 
 export const render = (params) => {
@@ -77,6 +78,20 @@ const init = (style) => {
               <div class="row p-3">
                 <img id="er-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+            </div> `;
+
+          break;
+        case "DOC":
+          dev.innerHTML = `
+            <div class="container">
+              <h1>開発</h1>
+              <div class="py-3">
+                <div id="app"></div>
+                <!--<div id="mocha"></div>-->
+              </div>
+              <div class="row p-3">
+                <div id="spec"></div>
               </div>
             </div> `;
 
