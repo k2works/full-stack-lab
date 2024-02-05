@@ -1,5 +1,5 @@
-import render from '../index';
-import { style } from './lib';
+import render from "./index";
+import { style } from "./lib";
 
 const contents = `
 ## 機能名
@@ -72,7 +72,7 @@ const ui = `
   }
 }
 @endsalt
-`
+`;
 
 const uiModel = `
 @startuml
@@ -115,7 +115,7 @@ const uiModel = `
   部 *-- 教員
   イベント *- 教員
   生徒 --* 組
-`
+`;
 
 const uiInteraction = `
 @startuml
@@ -132,7 +132,7 @@ const uiInteraction = `
   部_コレクション --> 部_シングル
   部_シングル --> 生徒_コレクション
 @enduml
-`
+`;
 
 const uml = `
 @startuml
