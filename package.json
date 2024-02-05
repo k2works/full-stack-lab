@@ -2,7 +2,7 @@
   "name": "@k2works/full-stack-lab",
   "version": "1.6.1",
   "description": "フルスタック開発教育支援ツール",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "webpack server --config ./webpack.config.js --open",
     "build": "webpack --config ./webpack.config.js",
