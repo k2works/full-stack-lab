@@ -1,6 +1,6 @@
 {
   "name": "@k2works/full-stack-lab",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "フルスタック開発教育支援ツール",
   "main": "src/index.js",
   "scripts": {
