@@ -8,10 +8,10 @@ export const style = {
 }
 
 export const render = (params) => {
-  const { contents, usecase, ui, uiModel, uiInteraction, uml, erd, mode } = params;
+  const { contents, mindmap, usecase, ui, uiModel, uiInteraction, uml, erd, mode } = params;
   init(mode);
   documents(contents);
-  diagrams(usecase, ui, uiModel, uiInteraction, uml, erd, mode);
+  diagrams(mindmap, usecase, ui, uiModel, uiInteraction, uml, erd, mode);
 };
 
 const init = (style) => {
@@ -29,6 +29,11 @@ const init = (style) => {
               </div>
               <div class="row p-3">
                 <div id="spec"></div>
+              </div>
+              <h2>マインドマップ</h2>
+              <div class="row p-3">
+                <img id="mindmap-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
               <h2>ユースケース</h2>
               <div class="row p-3">
@@ -63,6 +68,11 @@ const init = (style) => {
               </div>
               <div class="row p-3">
                 <div id="spec"></div>
+              </div>
+              <h2>マインドマップ</h2>
+              <div class="row p-3">
+                <img id="mindmap-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
               <h2>ユースケース</h2>
               <div class="row p-3">
@@ -106,6 +116,11 @@ const init = (style) => {
               </div>
               <div class="row p-3">
                 <div id="spec"></div>
+              </div>
+              <h2>マインドマップ</h2>
+              <div class="row p-3">
+                <img id="mindmap-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
               <h2>ユースケース</h2>
               <div class="row p-3">
@@ -153,8 +168,14 @@ const documents = (contents) => {
   });
 };
 
-const diagrams = (usecase, ui, uiModel, uiInteraction, uml, erd, mode) => {
+const diagrams = (mindmap, usecase, ui, uiModel, uiInteraction, uml, erd, mode) => {
   if (mode === style.UI) {
+    ((mindmap) => {
+      const outputId = 'mindmap-im';
+      const source = mindmap;
+      compress(source, outputId);
+    })(mindmap);
+
     ((usecae) => {
       const outputId = 'usecae-im';
       const source = usecae;
@@ -180,6 +201,12 @@ const diagrams = (usecase, ui, uiModel, uiInteraction, uml, erd, mode) => {
     })(uiInteraction);
 
   } else if (mode === style.API) {
+    ((mindmap) => {
+      const outputId = 'mindmap-im';
+      const source = mindmap;
+      compress(source, outputId);
+    })(mindmap);
+
     ((usecae) => {
       const outputId = 'usecae-im';
       const source = usecae;
@@ -198,6 +225,12 @@ const diagrams = (usecase, ui, uiModel, uiInteraction, uml, erd, mode) => {
       compress(source, outputId);
     })(erd);
   } else {
+    ((mindmap) => {
+      const outputId = 'mindmap-im';
+      const source = mindmap;
+      compress(source, outputId);
+    })(mindmap);
+
     ((usecae) => {
       const outputId = 'usecae-im';
       const source = usecae;
