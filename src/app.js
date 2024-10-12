@@ -200,5 +200,5 @@ e01 |o..o{ e03
 @enduml
 `;
 
-const mode = style.APP;
+const mode = style.DOC;
 render({ mindmap, contents, ui, uiModel, uiInteraction, usecase, uml, erd, mode });

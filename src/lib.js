@@ -27,13 +27,13 @@ const init = (style) => {
                 <div id="app"></div>
                 <!--<div id="mocha"></div>-->
               </div>
-              <div class="row p-3">
-                <div id="spec"></div>
-              </div>
               <h2>マインドマップ</h2>
               <div class="row p-3">
                 <img id="mindmap-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <div class="row p-3">
+                <div id="spec"></div>
               </div>
               <h2>ユースケース</h2>
               <div class="row p-3">
@@ -41,6 +41,7 @@ const init = (style) => {
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
               <h2>ユーザーインターフェース</h2>
+              <h3>ビュー</h3>
               <div class="row p-3">
                 <img id="ui-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
@@ -66,20 +67,20 @@ const init = (style) => {
                 <div id="app"></div>
                 <!--<div id="mocha"></div>-->
               </div>
-              <div class="row p-3">
-                <div id="spec"></div>
-              </div>
               <h2>マインドマップ</h2>
               <div class="row p-3">
                 <img id="mindmap-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <div class="row p-3">
+                <div id="spec"></div>
               </div>
               <h2>ユースケース</h2>
               <div class="row p-3">
                 <img id="usecae-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
-              <h2>オブジェクトモデル</h2>
+              <h2>ドメインモデル</h2>
               <div class="row p-3">
                 <img id="class-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
@@ -100,6 +101,11 @@ const init = (style) => {
                 <div id="app"></div>
                 <!--<div id="mocha"></div>-->
               </div>
+              <h2>マインドマップ</h2>
+              <div class="row p-3">
+                <img id="mindmap-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
               <div class="row p-3">
                 <div id="spec"></div>
               </div>
@@ -114,20 +120,31 @@ const init = (style) => {
                 <div id="app"></div>
                 <!--<div id="mocha"></div>-->
               </div>
-              <div class="row p-3">
-                <div id="spec"></div>
-              </div>
               <h2>マインドマップ</h2>
               <div class="row p-3">
                 <img id="mindmap-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <div class="row p-3">
+                <div id="spec"></div>
               </div>
               <h2>ユースケース</h2>
               <div class="row p-3">
                 <img id="usecae-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
+              <h2>ドメインモデル</h2>
+              <div class="row p-3">
+                <img id="class-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
+              <h2>データモデル</h2>
+              <div class="row p-3">
+                <img id="er-im"
+                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
+              </div>
               <h2>ユーザーインターフェース</h2>
+              <h3>ビュー</h3>
               <div class="row p-3">
                 <img id="ui-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
@@ -140,16 +157,6 @@ const init = (style) => {
               <h3>インタラクション</h3>
               <div class="row p-3">
                 <img id="ui-interaction-im"
-                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
-              </div>
-              <h2>オブジェクトモデル</h2>
-              <div class="row p-3">
-                <img id="class-im"
-                src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
-              </div>
-              <h2>データモデル</h2>
-              <div class="row p-3">
-                <img id="er-im"
                 src=http://www.plantuml.com/plantuml/img/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000>
               </div>
             </div> `;
@@ -224,6 +231,12 @@ const diagrams = (mindmap, usecase, ui, uiModel, uiInteraction, uml, erd, mode) 
       const source = erd;
       compress(source, outputId);
     })(erd);
+  } else if (mode === style.DOC) {
+    ((mindmap) => {
+      const outputId = 'mindmap-im';
+      const source = mindmap;
+      compress(source, outputId);
+    })(mindmap);
   } else {
     ((mindmap) => {
       const outputId = 'mindmap-im';
